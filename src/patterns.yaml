@@ -1,0 +1,15 @@
+# File type
+log:
+  foo:
+    - FOO
+  bar:
+    - BAR
+  foobar:
+    - FOO
+    - BAR
+  dgx:
+    - DGX
+
+txt:
+  kizero:
+    - KIZERO
