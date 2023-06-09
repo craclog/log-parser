@@ -1,4 +1,9 @@
-# File type
+# Structure:
+#   <file type>:
+#     <pattern name>:
+#       - <pattern1>
+#       - <pattern2>
+
 log:
   foo:
     - FOO

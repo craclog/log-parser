@@ -1,5 +1,7 @@
 # log-parser
-
+This python program helps analyzing any log files that you want.
+After registering the required string patterns in the pattern.yaml file,
+running this program will generate the parsed output of each pattern.
 
 # Run
 
