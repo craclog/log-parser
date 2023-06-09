@@ -1,0 +1,8 @@
+2022/09/03-12:34:03.235 debug_message(t:   1000000)[MODULE_A_FOO, option_ip:a6:75:12:34:56:78]
+2022/09/03-12:34:03.235 debug_message(t:   1000001)[MODULE_A_FOO, option_ip:a6:75:12:34:56:78]
+2022/09/03-12:34:03.236 debug_message(t:   1000002)[MODULE_B_FOO, option_ip:a6:75:12:34:56:78]
+2022/09/03-12:34:03.236 debug_message(t:   1000003)[MODULE_B_FOO, option_ip:a6:75:12:34:56:78]
+2022/09/03-12:34:03.237 debug_message(t:   1000004)[MODULE_A_BAR, option_ip:a6:75:12:34:56:78]
+2022/09/03-12:34:03.238 debug_message(t:   1000005)[MODULE_A_BAR, option_ip:a6:75:12:34:56:78]
+2022/09/03-12:34:03.239 debug_message(t:   1000006)[MODULE_B_BAR, option_ip:a6:75:12:34:56:78]
+2022/09/03-12:34:03.239 debug_message(t:   1000006)[MODULE_C_DGX, option1:A option2:B]
