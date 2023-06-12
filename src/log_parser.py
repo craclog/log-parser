@@ -34,7 +34,7 @@ def parse_log_file_and_generate_outputs(args, pttrn_reader: PatternReader) -> No
         pattern = pttrn_reader.get_pattern(file_type=file_type, key=key)
         output = run_egrep(pattern=pattern, target_file_path=args.file)
         if output:
-            with open(os.path.join(args.out, f"{key}.{file_type}"), "w", encoding="utf-8") as f:
+            with open(os.path.join(args.out, f"{key}.{file_type}"), "w") as f:
                 f.write(output)
 
 def main():

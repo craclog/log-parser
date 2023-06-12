@@ -9,7 +9,7 @@ class PatternReader:
     def _read(self, path: str) -> None:
         """ Read yaml file and store it as a dict."""
         abs_path = os.path.abspath(path)
-        with open(abs_path, "r", encoding="utf-8") as f:
+        with open(abs_path, "r") as f:
             self.pattern_dict = yaml.load(f, Loader=yaml.SafeLoader)
 
     def get_pattern(self, file_type: str, key: str) -> str:
