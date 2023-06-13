@@ -5,7 +5,6 @@ from pattern_reader import PatternReader
 from setting import logger
 from argument_parser import ArgumentParser
 
-PATTERN_YAML_PATH = "src/patterns.yaml"
 
 def run_egrep(pattern: str, target_file_path: str) -> str:
     """ Run egrep with i option and return the result. """
@@ -41,7 +40,7 @@ def main():
     start_time = time.time()
 
     args = ArgumentParser().parse_args()
-    pttrn_reader = PatternReader(PATTERN_YAML_PATH)
+    pttrn_reader = PatternReader()
 
     parse_log_file_and_generate_outputs(args, pttrn_reader)
     logger.info(f"Elapsed time: {time.time() - start_time:.3f} seconds")
