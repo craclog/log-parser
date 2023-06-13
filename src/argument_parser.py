@@ -13,7 +13,7 @@ class ArgumentParser:
     def parse_args(self):
         self.parser.add_argument('--file', help='target log file path', required=True)
         self.parser.add_argument('--out', help='output directory', required=False, default=".")
-        self.parser.add_argument('--verbose', help='verbose mode', action='store_false')
+        self.parser.add_argument('--verbose', help='verbose mode', action='store_true', default=False)
         args = self.parser.parse_args()
         args.out = abspath(args.out)
         if args.verbose:
