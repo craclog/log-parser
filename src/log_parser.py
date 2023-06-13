@@ -27,7 +27,10 @@ def parse_log_file_and_generate_outputs(args, pttrn_reader: PatternReader) -> No
     file_type = get_file_type(args.file)
     logger.debug(f"file_type: {file_type}")
 
-    assert(file_type in pttrn_reader.pattern_dict.keys())
+    if (file_type not in pttrn_reader.pattern_dict.keys()):
+        logger.error(f"File type {file_type} is not supported.")
+        return
+
     for key in pttrn_reader.pattern_dict[file_type].keys():
         logger.info(f"Grep pattern: {key}")
         pattern = pttrn_reader.get_pattern(file_type=file_type, key=key)
@@ -40,7 +43,7 @@ def main():
     start_time = time.time()
 
     args = ArgumentParser().parse_args()
-    pttrn_reader = PatternReader()
+    pttrn_reader = PatternReader(yaml_path=args.pattern)
 
     parse_log_file_and_generate_outputs(args, pttrn_reader)
     logger.info(f"Elapsed time: {time.time() - start_time:.3f} seconds")
