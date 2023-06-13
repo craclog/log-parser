@@ -1,14 +1,15 @@
 import os
 import unittest
 from src.pattern_reader import PatternReader
+from test.test_fixture import Fixture
 
-TEST_PATTERN_YAML_PATH = "test/test_patterns.yaml"
+# TEST_PATTERN_YAML_PATH = "test/test_patterns.yaml"
 
 class TestPatternReader(unittest.TestCase):
     """ Test for PatternReader class. """
 
     def setUp(self):
-        self.pattern = PatternReader(TEST_PATTERN_YAML_PATH)
+        self.pattern = PatternReader(Fixture.TEST_PATTERN_PATH)
 
     def test_read(self):
         """ Test for _read() method. _read is called in __init__(). """
