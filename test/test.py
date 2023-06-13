@@ -8,7 +8,7 @@ TEST_DIR = "test"
 TEST_OUTPUT_DIR = f"{TEST_DIR}/data"
 TEST_LOG_FILE_PATH = f"{TEST_DIR}/data/sample.log"
 TEST_TXT_FILE_PATH = f"{TEST_DIR}/data/sample2.txt"
-
+TEST_PATTERN_PATH = f"{TEST_DIR}/test_patterns.yaml"
 
 class MainTests(unittest.TestCase):
     """ Test main file with arguments via unittest """
@@ -34,7 +34,7 @@ class MainTests(unittest.TestCase):
 
     def test_run_main_py_in_terminal_log(self):
         # Run main program with arguments. Parse "*.log" file.
-        result = subprocess.run(['python3', TEST_MAIN_PY_PATH, '--file', TEST_LOG_FILE_PATH, '--out', TEST_OUTPUT_DIR, '--verbose'], stdout=subprocess.PIPE)
+        result = subprocess.run(['python3', TEST_MAIN_PY_PATH, '--file', TEST_LOG_FILE_PATH, '--out', TEST_OUTPUT_DIR, '--pattern', TEST_PATTERN_PATH, '--verbose'], stdout=subprocess.PIPE)
 
         # Check if there is no error
         self.assertEqual(result.returncode, 0)
@@ -47,7 +47,7 @@ class MainTests(unittest.TestCase):
 
     def test_run_main_py_in_terminal_txt(self):
         # Run main program with arguments. Parse "*.txt" file.
-        result = subprocess.run(['python3', TEST_MAIN_PY_PATH, '--file', TEST_TXT_FILE_PATH, '--out', TEST_OUTPUT_DIR, '--verbose'], stdout=subprocess.PIPE)
+        result = subprocess.run(['python3', TEST_MAIN_PY_PATH, '--file', TEST_TXT_FILE_PATH, '--out', TEST_OUTPUT_DIR, '--pattern', TEST_PATTERN_PATH, '--verbose'], stdout=subprocess.PIPE)
 
         # Check if there is no error
         self.assertEqual(result.returncode, 0)
