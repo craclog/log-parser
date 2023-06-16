@@ -4,6 +4,7 @@ import os
 from src.setting import logger
 from test.test_fixture import Fixture
 
+
 class MainTests(unittest.TestCase):
     """ Test main file with arguments via unittest """
 
@@ -27,8 +28,14 @@ class MainTests(unittest.TestCase):
             os.remove(f"{Fixture.TEST_OUTPUT_DIR}/kizero.txt")
 
     def test_run_main_py_in_terminal_log(self):
-        # Run main program with arguments. Parse "*.log" file.
-        result = subprocess.run(['python3', Fixture.TEST_MAIN_PY_PATH, '--file', Fixture.TEST_LOG_FILE_PATH, '--out', Fixture.TEST_OUTPUT_DIR, '--pattern', Fixture.TEST_PATTERN_PATH, '--verbose'], stdout=subprocess.PIPE)
+        """ Test main.py with arguments via unittest. Parse "*.log" file. """
+        result = subprocess.run(['python3', Fixture.TEST_MAIN_PY_PATH,
+                                 '--file', Fixture.TEST_LOG_FILE_PATH,
+                                 '--out', Fixture.TEST_OUTPUT_DIR,
+                                 '--pattern', Fixture.TEST_PATTERN_PATH,
+                                 '--verbose'],
+                                check=False,
+                                stdout=subprocess.PIPE)
 
         # Check if there is no error
         self.assertEqual(result.returncode, 0)
@@ -36,15 +43,23 @@ class MainTests(unittest.TestCase):
         # Check if output files are generated
         self.assertTrue(os.path.exists(f"{Fixture.TEST_OUTPUT_DIR}/foo.log"))
         self.assertTrue(os.path.exists(f"{Fixture.TEST_OUTPUT_DIR}/bar.log"))
-        self.assertTrue(os.path.exists(f"{Fixture.TEST_OUTPUT_DIR}/foobar.log"))
+        self.assertTrue(os.path.exists(
+            f"{Fixture.TEST_OUTPUT_DIR}/foobar.log"))
         self.assertTrue(os.path.exists(f"{Fixture.TEST_OUTPUT_DIR}/dgx.log"))
 
     def test_run_main_py_in_terminal_txt(self):
-        # Run main program with arguments. Parse "*.txt" file.
-        result = subprocess.run(['python3', Fixture.TEST_MAIN_PY_PATH, '--file', Fixture.TEST_TXT_FILE_PATH, '--out', Fixture.TEST_OUTPUT_DIR, '--pattern', Fixture.TEST_PATTERN_PATH, '--verbose'], stdout=subprocess.PIPE)
+        """ Test main.py with arguments via unittest. Parse "*.txt" file. """
+        result = subprocess.run(['python3', Fixture.TEST_MAIN_PY_PATH,
+                                 '--file', Fixture.TEST_TXT_FILE_PATH,
+                                 '--out', Fixture.TEST_OUTPUT_DIR,
+                                 '--pattern', Fixture.TEST_PATTERN_PATH,
+                                 '--verbose'],
+                                check=False,
+                                stdout=subprocess.PIPE)
 
         # Check if there is no error
         self.assertEqual(result.returncode, 0)
 
         # Check if output files are generated
-        self.assertTrue(os.path.exists(f"{Fixture.TEST_OUTPUT_DIR}/kizero.txt"))
+        self.assertTrue(os.path.exists(
+            f"{Fixture.TEST_OUTPUT_DIR}/kizero.txt"))

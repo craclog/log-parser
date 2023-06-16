@@ -24,10 +24,11 @@ def get_file_type(filename: str):
     return filename.split('.')[-1]
 
 def parse_log_file_and_generate_outputs(args, pttrn_reader: PatternReader) -> None:
+    """ Parse log file and generate outputs with patterns """
     file_type = get_file_type(args.file)
     logger.debug(f"file_type: {file_type}")
 
-    if (file_type not in pttrn_reader.pattern_dict.keys()):
+    if file_type not in pttrn_reader.pattern_dict.keys():
         logger.error(f"File type {file_type} is not supported.")
         return
 
@@ -36,10 +37,11 @@ def parse_log_file_and_generate_outputs(args, pttrn_reader: PatternReader) -> No
         pattern = pttrn_reader.get_pattern(file_type=file_type, key=key)
         output = run_egrep(pattern=pattern, target_file_path=args.file)
         if output:
-            with open(os.path.join(args.out, f"{key}.{file_type}"), "w") as f:
-                f.write(output)
+            with open(os.path.join(args.out, f"{key}.{file_type}"), "w") as file:
+                file.write(output)
 
 def main():
+    """ Main function """
     start_time = time.time()
 
     args = ArgumentParser().parse_args()

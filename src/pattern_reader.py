@@ -1,5 +1,5 @@
-import yaml
 import os
+import yaml
 from setting import logger
 
 
@@ -14,15 +14,15 @@ class PatternReader:
     def _read(self, path: str) -> None:
         """ Read yaml file and store it as a dict."""
 
-        if (path == ""):
+        if path == "":
             cur_executed_path = os.path.dirname(os.path.abspath(__file__))
             logger.debug(f"cur_executed_path: {cur_executed_path}")
             yaml_path = os.path.join(cur_executed_path, PatternReader.PATTERN_YAML_FILE_NAME)
         else:
             yaml_path = os.path.abspath(path)
 
-        with open(yaml_path, "r") as f:
-            self.pattern_dict = yaml.load(f, Loader=yaml.SafeLoader)
+        with open(yaml_path, "r") as file:
+            self.pattern_dict = yaml.load(file, Loader=yaml.SafeLoader)
 
     def get_pattern(self, file_type: str, key: str) -> str:
         """ Return pattern string using '|' as a delimiter."""

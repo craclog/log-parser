@@ -1,4 +1,5 @@
 class Fixture:
+    """ Fixture data for unittest """
 
     TEST_MAIN_PY_PATH = "src/log_parser.py"
     TEST_DIR = "test"
