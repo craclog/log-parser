@@ -3,20 +3,30 @@ from os.path import abspath
 from setting import logger
 
 class ArgumentParser:
-    """
-    Usage:
-    python3 log_parser.py --file <TARGET_FILE> [--verbose]
-    """
+    '''
+    Argument parser class.
+    '''
     def __init__(self):
         self.parser = argparse.ArgumentParser(description='Log Parser')
 
     def parse_args(self):
-        """ Parse arguments """
+        '''
+        Parse arguments
+
+        Attributes:
+            file (str): target log file path
+            out (str): output directory
+            pattern (str): pattern yaml file path
+            type (str): file type (e.g. log, txt)
+            verbose (bool): verbose mode
+        '''
         self.parser.add_argument('--file', help='target log file path',
                                  required=True)
         self.parser.add_argument('--out', help='output directory',
                                  required=False, default=".")
         self.parser.add_argument('--pattern', help='pattern yaml file path',
+                                 required=False, default="")
+        self.parser.add_argument('--type', help='Force file type (e.g. log, txt)',
                                  required=False, default="")
         self.parser.add_argument('--verbose', help='verbose mode',
                                  action='store_true', default=False)
