@@ -32,7 +32,8 @@ class LogParser:
         logger.debug(f"cmd_list: {cmd_list}")
         try:
             output = subprocess.check_output(cmd_list)
-            logger.debug("\n" + output.decode("utf-8"))
+            # Print output for debug
+            # logger.debug("\n" + output.decode("utf-8"))
             return output.decode("utf-8")
         except subprocess.CalledProcessError as err:
             logger.error(f"Error: {err}")
@@ -73,8 +74,10 @@ class LogParser:
                 pattern = self.pttrn_reader.get_pattern(file_type=file_type, key=key)
                 output = self.run_egrep(pattern=pattern)
                 if output:
-                    with open(os.path.join(self.out_dir, f"{key}.{file_type}"), "w") as file:
+                    file_name = f"{key}.{file_type}"
+                    with open(os.path.join(self.out_dir, file_name), "w") as file:
                         file.write(output)
+                        logger.info(f"Output file: {file_name}")
         except ValueError as verr:
             logger.error(f"Error: {verr}")
         except Exception as err:
