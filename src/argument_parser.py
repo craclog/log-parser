@@ -28,7 +28,7 @@ class ArgumentParser:
                                  required=False, default="")
         self.parser.add_argument('--type', help='Force file type (e.g. log, txt)',
                                  required=False, default="")
-        self.parser.add_argument('--verbose', help='verbose mode',
+        self.parser.add_argument('-v', '--verbose', help='verbose mode',
                                  action='store_true', default=False)
         args = self.parser.parse_args()
         args.out = abspath(args.out)
