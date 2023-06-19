@@ -5,9 +5,8 @@ LINK="/usr/local/bin/log_parser"
 # Check symlink already exists
 if [ -f "$LINK" ] || [ -L "$LINK" ]; then
     echo "LINK: $LINK"
-    echo "Error: Symbolic link for log_parser already exists"
+    echo "Warning: Symbolic link for log_parser already exists"
     ls -al "$LINK"
-    exit 0
 fi
 
 # Get absolute path of this script. This is needed to make symlink
