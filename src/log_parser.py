@@ -65,12 +65,13 @@ class LogParser:
             file_type = self.get_file_type(self.log_file)
             logger.debug(f"file_type: {file_type}")
 
-            if file_type not in self.pttrn_reader.pattern_dict.keys():
+            if file_type not in self.pttrn_reader.get_all_file_types():
                 logger.error(f"File type {file_type} is not supported.")
                 return
 
-            for key in self.pttrn_reader.pattern_dict[file_type].keys():
+            for key in self.pttrn_reader.get_keys_for_type(file_type):
                 logger.info(f"Grep pattern: {key}")
+                self.pttrn_reader.dump_pattern(file_type=file_type, key=key)
                 pattern = self.pttrn_reader.get_pattern(file_type=file_type, key=key)
                 output = self.run_egrep(pattern=pattern)
                 if output:

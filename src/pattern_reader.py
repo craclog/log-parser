@@ -4,7 +4,7 @@ from setting import logger
 
 
 class PatternReader:
-    """ Read yaml file and return pattern string. """
+    """Read yaml file and return pattern string. """
 
     PATTERN_YAML_FILE_NAME = "patterns.yaml"
 
@@ -12,7 +12,7 @@ class PatternReader:
         self._read(yaml_path)
 
     def _read(self, path: str) -> None:
-        """ Read yaml file and store it as a dict."""
+        """Read yaml file and store it as a dict."""
 
         if path == "":
             cur_executed_path = os.path.dirname(os.path.abspath(__file__))
@@ -25,5 +25,19 @@ class PatternReader:
             self.pattern_dict = yaml.load(file, Loader=yaml.SafeLoader)
 
     def get_pattern(self, file_type: str, key: str) -> str:
-        """ Return pattern string using '|' as a delimiter."""
+        """Return pattern string using '|' as a delimiter."""
         return '|'.join(self.pattern_dict[file_type][key])
+
+    def get_all_file_types(self) -> list:
+        """Return all file types in pattern yaml file."""
+        return list(self.pattern_dict.keys())
+
+    def get_keys_for_type(self, file_type: str) -> list:
+        """Return all keys for specified file type."""
+        return list(self.pattern_dict[file_type].keys())
+
+    def dump_pattern(self, file_type: str, key: str) -> None:
+        """Print pattern string for specified file type and key."""
+        logger.info(f"Patterns for [file type: {file_type}], [key: {key}]:")
+        for pattern in self.pattern_dict[file_type][key]:
+            logger.info(f"- {pattern}")

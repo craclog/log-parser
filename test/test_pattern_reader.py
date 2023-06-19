@@ -31,3 +31,13 @@ class TestPatternReader(unittest.TestCase):
         expected_pattern = "FOO|BAR"
         self.assertEqual(expected_pattern,
                          self.pattern.get_pattern(file_type="log", key="foobar"))
+
+    def test_get_all_file_types(self):
+        """ Test for get_all_file_types() method. """
+        expected_file_types = ["log", "txt"]
+        self.assertEqual(expected_file_types, self.pattern.get_all_file_types())
+
+    def test_get_keys_for_type(self):
+        """ Test for get_keys_for_type() method. """
+        expected_keys = ["foo", "bar", "foobar", "dgx"]
+        self.assertEqual(expected_keys, self.pattern.get_keys_for_type("log"))
